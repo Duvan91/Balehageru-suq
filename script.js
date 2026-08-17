@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "251955071070";
+const TELEGRAM_USERNAME = "SadamTesema";
 
 let allProducts = [];
 
@@ -41,13 +41,12 @@ function renderProducts(products) {
   products.forEach(p => {
     const card = document.createElement("div");
     card.className = "product-card";
-    const msg = encodeURIComponent("Hello, I'm interested in: " + p.name);
     card.innerHTML = `
       <img src="${p.image}" alt="${p.name}">
       <div class="product-info">
         <h3>${p.name}</h3>
         <div class="price">${p.price}</div>
-        <a class="order-btn" href="https://wa.me/${WHATSAPP_NUMBER}?text=${msg}" target="_blank">Order on WhatsApp</a>
+        <a class="order-btn" href="https://t.me/${TELEGRAM_USERNAME}" target="_blank">Order on Telegram</a>
       </div>
     `;
     grid.appendChild(card);
