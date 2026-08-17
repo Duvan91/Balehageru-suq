@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "251900000000";
+const WHATSAPP_NUMBER = "251955071070";
 
 fetch("products.json")
   .then(res => res.json())
