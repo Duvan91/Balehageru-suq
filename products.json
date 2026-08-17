@@ -1,0 +1,5 @@
+[
+  { "name": "Sample Item 1", "price": "500 ETB", "image": "https://via.placeholder.com/300" },
+  { "name": "Sample Item 2", "price": "750 ETB", "image": "https://via.placeholder.com/300" },
+  { "name": "Sample Item 3", "price": "1200 ETB", "image": "https://via.placeholder.com/300" }
+]
