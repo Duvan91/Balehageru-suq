@@ -1,5 +1,4 @@
 const TELEGRAM_USERNAME = "SadamTesema";
-
 let allProducts = [];
 
 fetch("products.json")
@@ -9,46 +8,55 @@ fetch("products.json")
     buildCategories(products);
     renderProducts(products);
   })
-  .catch(() => {
-    document.getElementById("products").innerHTML = "<p class='loading'>Could not load products.</p>";
+  .catch(err => {
+    document.getElementById("products").innerHTML =
+      "<p class='loading'>Error loading products: " + err.message + "</p>";
   });
 
 function buildCategories(products) {
-  const cats = ["all", ...new Set(products.map(p => p.category).filter(Boolean))];
-  const nav = document.getElementById("categories");
-  nav.innerHTML = "";
-  cats.forEach(cat => {
-    const btn = document.createElement("button");
-    btn.className = "cat-chip" + (cat === "all" ? " active" : "");
-    btn.textContent = cat === "all" ? "All" : cat;
-    btn.dataset.cat = cat;
-    btn.onclick = () => {
-      document.querySelectorAll(".cat-chip").forEach(c => c.classList.remove("active"));
-      btn.classList.add("active");
-      renderProducts(cat === "all" ? allProducts : allProducts.filter(p => p.category === cat));
-    };
-    nav.appendChild(btn);
-  });
+  try {
+    const cats = ["all", ...new Set(products.map(p => p.category).filter(Boolean))];
+    const nav = document.getElementById("categories");
+    nav.innerHTML = "";
+    cats.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = "cat-chip" + (cat === "all" ? " active" : "");
+      btn.textContent = cat === "all" ? "All" : cat;
+      btn.dataset.cat = cat;
+      btn.onclick = () => {
+        document.querySelectorAll(".cat-chip").forEach(c => c.classList.remove("active"));
+        btn.classList.add("active");
+        renderProducts(cat === "all" ? allProducts : allProducts.filter(p => p.category === cat));
+      };
+      nav.appendChild(btn);
+    });
+  } catch (err) {
+    document.getElementById("products").innerHTML =
+      "<p class='loading'>Category error: " + err.message + "</p>";
+  }
 }
 
 function renderProducts(products) {
   const grid = document.getElementById("products");
-  grid.innerHTML = "";
-  if (products.length === 0) {
-    grid.innerHTML = "<p class='loading'>No items in this category yet.</p>";
-    return;
+  try {
+    grid.innerHTML = "";
+    if (products.length === 0) {
+      grid.innerHTML = "<p class='loading'>No items in this category yet.</p>";
+      return;
+    }
+    products.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML =
+        "<img src='" + p.image + "' alt='" + p.name + "'>" +
+        "<div class='product-info'>" +
+        "<h3>" + p.name + "</h3>" +
+        "<div class='price'>" + p.price + "</div>" +
+        "<a class='order-btn' href='https://t.me/" + TELEGRAM_USERNAME + "' target='_blank'>Order on Telegram</a>" +
+        "</div>";
+      grid.appendChild(card);
+    });
+  } catch (err) {
+    grid.innerHTML = "<p class='loading'>Render error: " + err.message + "</p>";
   }
-  products.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.name}">
-      <div class="product-info">
-        <h3>${p.name}</h3>
-        <div class="price">${p.price}</div>
-        <a class="order-btn" href="https://t.me/${TELEGRAM_USERNAME}" target="_blank">Order on Telegram</a>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
 }
