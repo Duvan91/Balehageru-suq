@@ -18,7 +18,7 @@
 <section class="hero" style="background-image: url('IMG_20260818_001540_483.jpg');">
   <div class="hero-overlay">
     <h1>Everything You Need,<br>One Shop.</h1>
-    <p>Goods & services from Balehageru Suq — order directly on Telegram.</p>
+    <p>Goods & services from Balehageru Suq - order directly on Telegram.</p>
     <a href="#products" class="hero-btn">Shop Now</a>
   </div>
 </section>
@@ -29,149 +29,14 @@
 
 <main>
   <section id="products" class="product-grid">
-    <p class="loadin
-cat > style.css << 'EOF'
-:root {
-  --bg: #0e0c0a;
-  --card: #1a1611;
-  --card2: #221c16;
-  --gold: #e0a94d;
-  --text: #f5efe4;
-  --muted: #9c9284;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, Segoe UI, Roboto, sans-serif;
-  line-height: 1.5;
-}
-.topbar {
-  padding: 16px 20px;
-  border-bottom: 1px solid #2a2118;
-  display: flex;
-  justify-content: center;
-}
-.brand-en { font-weight: 700; font-size: 1.15rem; color: var(--gold); }
-.brand-am { font-size: 0.85rem; color: var(--muted); margin-left: 8px; }
+    <p class="loading">Loading products...</p>
+  </section>
+</main>
 
-.hero {
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.hero-overlay {
-  background: rgba(0,0,0,0.55);
-  padding: 32px 24px;
-  border-radius: 16px;
-  max-width: 90%;
-}
-.hero h1 {
-  font-size: 2rem;
-  line-height: 1.25;
-  margin-bottom: 12px;
-  color: #fff;
-}
-.hero p {
-  color: #e8e2d6;
-  max-width: 420px;
-  margin: 0 auto 20px;
-  font-size: 0.95rem;
-}
-.hero-btn {
-  display: inline-block;
-  background: var(--gold);
-  color: #14100a;
-  font-weight: 700;
-  padding: 12px 28px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
+<footer class="site-footer">
+  <p>Contact us on Telegram for orders and questions.</p>
+</footer>
 
-.categories {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 16px 20px;
-  border-bottom: 1px solid #2a2118;
-}
-.cat-chip {
-  flex: none;
-  background: var(--card2);
-  color: var(--muted);
-  border: 1px solid #33291d;
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  white-space: nowrap;
-}
-.cat-chip.active {
-  background: var(--gold);
-  color: #14100a;
-  border-color: var(--gold);
-  font-weight: 600;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 14px;
-  padding: 20px;
-  max-width: 960px;
-  margin: 0 auto;
-}
-.loading { color: var(--muted); grid-column: 1 / -1; text-align: center; padding: 40px 0; }
-
-.product-card {
-  background: var(--card);
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid #2a2118;
-}
-.product-card img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  background: #221c16;
-  display: block;
-}
-.product-info { padding: 12px 12px 14px; }
-.product-info h3 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.product-info .price {
-  color: var(--gold);
-  font-weight: 700;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-}
-.order-btn {
-  display: block;
-  text-align: center;
-  background: #229ED9;
-  color: #fff;
-  font-weight: 700;
-  padding: 9px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.82rem;
-}
-
-.site-footer {
-  text-align: center;
-  padding: 32px 20px 40px;
-  color: var(--muted);
-  font-size: 0.85rem;
-  border-top: 1px solid #2a2118;
-  margin-top: 20px;
-}
+<script src="script.js"></script>
+</body>
+</html>
